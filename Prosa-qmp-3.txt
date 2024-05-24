@@ -1,0 +1,53 @@
+ITERACION 3
+
+Para el primer requerimiento:
+* Como usuarie de QuéMePongo, quiero recibir una sugerencia de prendas que me vista completamente
+(torso, piernas, pies), cubriendo cada parte del cuerpo con no más de una prenda
+(es decir, evitando superposiciones por ahora).
+
+Lo resolvi modificando la clase uniforme, que contenia una prenda de cada tipo y ahora la llamo atuendo
+luego una sugerencia sera un atuendo posible
+
+Para el segundo requerimiento:
+* Como usuarie de QuéMePongo, quiero recibir varias sugerencias que combinen todas
+las prendas de mi guardarropas
+
+Para esto utilicé el cartesianProduct de guava filtrando una lista de prendas en los distintos tipos
+y luego haciendo el producto cartesiano para obtener todas las combinaciones
+
+Para el tercer requerimiento:
+* Como usuarie de QuéMePongo, quiero poder indicar si una prenda es formal, informal, o neutra
+
+Esto lo resolvi creando el enum de formalidad y añadiendo a cada prenda el parametro de formalidad
+
+
+Para el cuarto requerimiento:
+
+* Como administradore de QuéMePongo, quiero que, si así está configurado,
+al generarse las sugerencias, se filtre la ropa informal para les usuaries mayores de 55 años.
+
+Para esto cree el motor de sugerencias segun formalidad y el usuario.
+Este antes de hacer el filtrado de las prendas, revisa si el usuario es mayor de 55 años y si es asi,
+saca de la lista de prendas las informales.
+
+
+Para el quinto requerimiento:
+
+* Como administradore de QuéMePongo, quiero que, si así esta configurado, al generarse las
+sugerencias, no se ejecute ningún tipo de lógica adicional.
+
+Para esto creo el motor de sugerencias basico que no hace ningun filtro por edad
+
+Para el sexto requerimiento:
+* Como administradore de QuéMePongo, quiero poder cambiar el motor de sugerencias
+ periódicamente entre los existentes (o nuevos) para evaluar cuál genera un
+  mejor efecto sobre los usuarios.
+
+Creo el proveedor de motor. Este contiene un motor que puedo ir seteando segun decida el administrador
+Luego al crear un guardarropa se le pasa la instancia del proovedor de motor y este utiliza
+el generarSugerencias segun el motor que este configurado en el proovedor.
+
+
+
+
+
